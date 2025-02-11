@@ -35,6 +35,7 @@
             this.buttonFecharClientes = new System.Windows.Forms.Button();
             this.buttonPesquisarCarros = new System.Windows.Forms.Button();
             this.labelText = new System.Windows.Forms.Label();
+            this.buttonRemoverCarro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,10 +61,11 @@
             // 
             this.buttonRemoverClientes.Location = new System.Drawing.Point(238, 41);
             this.buttonRemoverClientes.Name = "buttonRemoverClientes";
-            this.buttonRemoverClientes.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemoverClientes.Size = new System.Drawing.Size(107, 23);
             this.buttonRemoverClientes.TabIndex = 2;
-            this.buttonRemoverClientes.Text = "Remover";
+            this.buttonRemoverClientes.Text = "Remover Cliente";
             this.buttonRemoverClientes.UseVisualStyleBackColor = true;
+            this.buttonRemoverClientes.Click += new System.EventHandler(this.buttonRemoverClientes_Click);
             // 
             // label1
             // 
@@ -78,7 +80,7 @@
             // 
             // buttonFecharClientes
             // 
-            this.buttonFecharClientes.Location = new System.Drawing.Point(352, 42);
+            this.buttonFecharClientes.Location = new System.Drawing.Point(455, 13);
             this.buttonFecharClientes.Name = "buttonFecharClientes";
             this.buttonFecharClientes.Size = new System.Drawing.Size(75, 23);
             this.buttonFecharClientes.TabIndex = 4;
@@ -105,11 +107,22 @@
             this.labelText.Size = new System.Drawing.Size(0, 35);
             this.labelText.TabIndex = 6;
             // 
+            // buttonRemoverCarro
+            // 
+            this.buttonRemoverCarro.Location = new System.Drawing.Point(352, 41);
+            this.buttonRemoverCarro.Name = "buttonRemoverCarro";
+            this.buttonRemoverCarro.Size = new System.Drawing.Size(97, 23);
+            this.buttonRemoverCarro.TabIndex = 7;
+            this.buttonRemoverCarro.Text = "Remover Carro";
+            this.buttonRemoverCarro.UseVisualStyleBackColor = true;
+            this.buttonRemoverCarro.Click += new System.EventHandler(this.buttonRemoverCarro_Click);
+            // 
             // Gerenciamento_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1125, 450);
+            this.Controls.Add(this.buttonRemoverCarro);
             this.Controls.Add(this.labelText);
             this.Controls.Add(this.buttonPesquisarCarros);
             this.Controls.Add(this.buttonFecharClientes);
@@ -134,5 +147,6 @@
         private System.Windows.Forms.Button buttonFecharClientes;
         private System.Windows.Forms.Button buttonPesquisarCarros;
         private System.Windows.Forms.Label labelText;
+        private System.Windows.Forms.Button buttonRemoverCarro;
     }
 }

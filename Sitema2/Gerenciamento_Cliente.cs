@@ -106,5 +106,119 @@ namespace Sitema2
                 MessageBox.Show("Erro ao listar os clientes: " + ex.Message);
             }
         }
+
+        private void buttonRemoverClientes_Click(object sender, EventArgs e)
+        {
+            if (dgvClientes.SelectedRows.Count > 0)
+            {
+                //Pega ID do cliente da linha selecionada.
+                int clienteID = Convert.ToInt32(dgvClientes.SelectedRows[0].Cells["id_Cliente"].Value);
+
+                DialogResult result = MessageBox.Show("Are you sure?", 
+                    "Confirmar Exclusão", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    string connectionString = "Server=localhost; Port=3306; Database=bd_sistema; Uid=root; Pwd=;";
+
+                    try
+                    {
+
+                        //Cria uma conexão com  banco de dados MySql
+                        using (MySqlConnection consulta = new MySqlConnection(connectionString))
+                        {
+
+                            //Abre a conexão 
+                            consulta.Open();
+                            //Consulta os dados SQL definidos para selecionar o cliente
+                            string listagem = "DELETE FROM tb_clientes WHERE Id_Cliente = @Id_Cliente";
+
+                            using (MySqlCommand cmd = new MySqlCommand(listagem, consulta))
+                            {
+                                cmd.Parameters.AddWithValue("Id_Cliente", clienteID);
+
+                                int rowAffected = cmd.ExecuteNonQuery();
+
+                                if (rowAffected > 0)
+                                {
+                                    MessageBox.Show("Cliente Excluido com sucesso!");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Falha ao excluir!!!");
+                                }
+                            }
+                        }
+                    }catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro: " +  ex.Message);
+                    }
+                    
+                }
+
+            }
+            else 
+            {
+                MessageBox.Show("Please, select some thing!!!");
+            }
+
+        }
+
+        private void buttonRemoverCarro_Click(object sender, EventArgs e)
+        {
+            if (dgvClientes.SelectedRows.Count > 0)
+            {
+                //Pega ID do cliente da linha selecionada.
+                int carroID = Convert.ToInt32(dgvClientes.SelectedRows[0].Cells["id"].Value);
+
+                DialogResult result = MessageBox.Show("Are you sure?",
+                    "Confirmar Exclusão", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    string connectionString = "Server=localhost; Port=3306; Database=bd_sistema; Uid=root; Pwd=;";
+
+                    try
+                    {
+
+                        //Cria uma conexão com  banco de dados MySql
+                        using (MySqlConnection consulta = new MySqlConnection(connectionString))
+                        {
+
+                            //Abre a conexão 
+                            consulta.Open();
+                            //Consulta os dados SQL definidos para selecionar o cliente
+                            string listagem = "DELETE FROM tb_carros WHERE Id = @Id";
+
+                            using (MySqlCommand cmd = new MySqlCommand(listagem, consulta))
+                            {
+                                cmd.Parameters.AddWithValue("Id", carroID);
+
+                                int rowAffected = cmd.ExecuteNonQuery();
+
+                                if (rowAffected > 0)
+                                {
+                                    MessageBox.Show("Cliente Excluido com sucesso!");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Falha ao excluir!!!");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro: " + ex.Message);
+                    }
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please, select some thing!!!");
+            }
+        }
     }
 }
